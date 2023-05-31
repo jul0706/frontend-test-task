@@ -1,0 +1,10 @@
+.footer {
+    max-width: 880px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: flex-start;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    border-top: 1px solid rgba(84, 84, 84, 0.7);
+}
