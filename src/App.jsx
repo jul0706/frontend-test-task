@@ -6,7 +6,7 @@ import Main from "./components/Main";
 function App() {
   return (
     <>
-      <Header isLoggedIn={false} />
+      <Header isLoggedIn={true} />
       <Main />
       <Footer />
     </>

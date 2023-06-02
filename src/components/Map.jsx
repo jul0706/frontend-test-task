@@ -1,13 +1,14 @@
 import React from "react";
+import MapPoint from "./MapPoint";
+import model from "../utils/model";
 
 function Map() {
+    let id = 0;
     return (
-        <div >
-            <svg className="main__map"
+        <div className="map-container">
+            <svg className="map-container__map"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
-                /*width="1000.12"
-                height="999.75"*/
                 clipPath="url(#MapClipRectangle)"
                 overflow="hidden"
                 textRendering="optimizeLegibility"
@@ -1846,6 +1847,20 @@ function Map() {
                     d="M0 0H1000.12V999.75H0z"
                 ></path>
             </svg>
+            {
+                model.map((item) => {
+                    id++;
+                    return (<MapPoint
+                        key={id}
+                        coordinate={
+                            {
+                                x: `${(item.x).toFixed(2)}%`,
+                                y: `${(item.y).toFixed(2)}%`
+                            }
+                        }
+                    />)
+                })
+            }
         </div>
     );
 }

@@ -1,0 +1,6 @@
+.map-container__marker-container {
+    position: absolute;
+    cursor: pointer;
+    top: 0%;
+    left: 0%;
+}

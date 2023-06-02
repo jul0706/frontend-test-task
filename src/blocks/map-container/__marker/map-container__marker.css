@@ -1,0 +1,5 @@
+.map-container__marker {
+    position: absolute;
+    top: -24px;
+    left: -12px;
+}

@@ -8,6 +8,11 @@
 @import url(./blocks/header/__logo-container/header__logo-container.css);
 @import url(./blocks/header/__button/header__button.css);
 @import url(./blocks/main/main.css);
-@import url(./blocks/main/__map/main__map.css);
-@import url();
+@import url(./blocks/map-container/map-container.css);
+@import url(./blocks/map-container/__map/map-container__map.css);
+@import url(./blocks/map-container/__marker-container/map-container__marker-container.css);
+@import url(./blocks/main/__button/main__button.css);
+@import url(./blocks/main/__button/_add/main__button_type_add.css);
+@import url(./blocks/main/__button/_reset/main__button_type_reset.css);
+@import url(./blocks/map-container/__marker/map-container__marker.css);
 @import url();

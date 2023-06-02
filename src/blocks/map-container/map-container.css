@@ -1,0 +1,4 @@
+.map-container {
+    position: relative;
+    grid-area: map;
+}

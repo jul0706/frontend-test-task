@@ -1,5 +1,6 @@
-.header__button {
+.main__button {
     padding: 0;
+    margin: 0 auto;
     border: 1px solid black;
     font-family: 'Inter';
     font-style: normal;
@@ -10,10 +11,10 @@
     background-color: inherit;
     cursor: pointer;
     height: 40px;
-    width: 80px;
-    align-self: center;
+    width: 270px;
+    /*align-self: center;*/
 }
 
-.header__button:hover {
+.main__button:hover {
     opacity: 0.6;
 }

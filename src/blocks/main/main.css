@@ -1,5 +1,11 @@
 .main {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 36px;
+    display: grid;
+    grid-template-rows: auto min-content;
+    grid-template-areas:
+        "map map"
+        "add-button reset-button";
+    gap: 36px;
+    margin: 0 auto 36px auto;
+    max-width: 880px;
+    min-height: 880px;
 }
