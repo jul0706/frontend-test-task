@@ -15,4 +15,15 @@
 @import url(./blocks/main/__button/_add/main__button_type_add.css);
 @import url(./blocks/main/__button/_reset/main__button_type_reset.css);
 @import url(./blocks/map-container/__marker/map-container__marker.css);
+@import url(./blocks/popup-container/popup-container.css);
+@import url(./blocks/popup/popup.css);
+@import url(./blocks/popup/_is-opened/popup_is-opened.css);
+@import url(./blocks/close-icon/close-icon.css);
+@import url(./blocks/form-popup/form-popup.css);
+@import url(./blocks/form-popup/__button-save/form-popup__button-save.css);
+@import url(./blocks/form-popup/__input/form-popup__input.css);
+@import url(./blocks/form-popup/__inputs/form-popup__inputs.css);
+@import url(./blocks/form-popup/__title/form-popup__title.css);
+@import url(./blocks/close-icon/close-icon.css);
+@import url();
 @import url();

@@ -1858,6 +1858,8 @@ function Map() {
                                 y: `${(item.y).toFixed(2)}%`
                             }
                         }
+                        name={item.name}
+                        amount={item.amount}
                     />)
                 })
             }
