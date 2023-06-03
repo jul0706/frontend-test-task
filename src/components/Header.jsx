@@ -8,12 +8,7 @@ function Header({ isLoggedIn }) {
                 <img src={logoPath} alt="логотип сайта" className="header__logo" />
                 <h1 className='header__title'>Твоя Карта</h1>
             </div>
-            <button
-                type='button'
-                className='header__button'
-            >
-                {isLoggedIn ? 'Выйти' : 'Войти'}
-            </button>
+            {isLoggedIn && <button type='button' className='header__button'>Выйти</button>}
         </header>
     )
 }

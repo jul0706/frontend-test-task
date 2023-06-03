@@ -1,4 +1,4 @@
-const model = [
+const initialModel = [
     {"name":"hoek","amount":780,"x":37.482919613830745,"y":16.051401966251433},
     {"name":"кутняя","amount":50,"x":0.8770242799073458,"y":92.97660256270319},
     {"name":"ъглов","amount":650,"x":28.146877679893972,"y":61.377245508982035},
@@ -42,4 +42,4 @@ const model = [
     {"name":"кутова","amount":410,"x":53.293833320339914,"y":40.7185628742515},
     {"name":"goo.gl/jUwXfD","amount":570,"x":15.872768379200124,"y":59.2814371257485}
 ]
-export default model;
+export default initialModel;

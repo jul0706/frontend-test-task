@@ -1,7 +1,6 @@
-.form-popup__button-save {
-    /*width: 150px;
-    height: 50px;*/
-    padding: 14px 34px;
+.form-popup__button {
+    width: 130px;
+    height: 42px;
     background-color: inherit;
     color: black;
     margin: 0 36px 37px 36px;
@@ -12,6 +11,6 @@
     cursor: pointer;
 }
 
-.form-popup__button-save:hover {
+.form-popup__button:hover {
     opacity: 0.6;
 }

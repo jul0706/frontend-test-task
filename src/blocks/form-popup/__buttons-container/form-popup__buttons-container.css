@@ -1,0 +1,4 @@
+.form-popup__buttons-container {
+    display: grid;
+    grid-template-rows: auto;
+}

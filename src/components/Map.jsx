@@ -1,8 +1,7 @@
 import React from "react";
 import MapPoint from "./MapPoint";
-import model from "../utils/model";
 
-function Map() {
+function Map({ points }) {
     let id = 0;
     return (
         <div className="map-container">
@@ -1848,18 +1847,18 @@ function Map() {
                 ></path>
             </svg>
             {
-                model.map((item) => {
+                points.map((point) => {
                     id++;
                     return (<MapPoint
                         key={id}
                         coordinate={
                             {
-                                x: `${(item.x).toFixed(2)}%`,
-                                y: `${(item.y).toFixed(2)}%`
+                                x: `${(point.x).toFixed(2)}%`,
+                                y: `${(point.y).toFixed(2)}%`
                             }
                         }
-                        name={item.name}
-                        amount={item.amount}
+                        name={point.name}
+                        amount={point.amount}
                     />)
                 })
             }

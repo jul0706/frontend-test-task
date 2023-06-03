@@ -1,0 +1,7 @@
+.login__inputs {
+    margin-bottom: 50px;
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    gap: 30px;
+}
