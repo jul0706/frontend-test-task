@@ -7,5 +7,5 @@
     gap: 36px;
     margin: 0 auto 36px auto;
     max-width: 880px;
-    min-height: calc(100%-193px);
+    min-height: 880px;
 }

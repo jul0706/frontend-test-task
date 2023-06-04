@@ -79,7 +79,7 @@ function AddPointPopup({ isOpen, onClose, onAddPoint }) {
                             onChange={handleChange}
                         />
                     </fieldset>
-                    <button type="submit" className="form-popup__button-save">Создать</button>
+                    <button type="submit" className="form-popup__button">Создать</button>
                 </form>
             </div>
         </div>

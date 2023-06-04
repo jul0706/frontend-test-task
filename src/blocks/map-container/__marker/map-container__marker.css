@@ -3,3 +3,7 @@
     top: -24px;
     left: -12px;
 }
+
+.map-container__marker:hover {
+    transform: scale(1.2);
+}

@@ -31,11 +31,11 @@ function App() {
   }
 
   function handleAddPointClick() {
-    setIsEditPointPopupOpen(true);
+    setIsAddPointPopupOpen(true);
   }
 
-  function handleEditPointClick() {
-    setIsAddPointPopupOpen(true);
+  function handleEditPointClick(point) {
+    setSelectedPoint(point)
   }
 
   function openPopupWithConfirmation() {
@@ -78,7 +78,8 @@ function App() {
 
   function checkLogin() {
     if (localStorage.getItem('login')) {
-      navigate('/frontend-test-task', { replace: true })
+      handleLogin(true);
+      navigate('/frontend-test-task', { replace: true });
     } else {
       navigate('/sign-in', { replace: true })
     }
@@ -86,14 +87,14 @@ function App() {
 
   useEffect(() => {
     checkLogin()
-  })
+  }, [])
 
 
   return (
     <>
       <Header
         isLoggedIn={isLoggedIn}
-        onLogout={handleLogin}
+        onLogout={setIsLoggedIn}
       />
       <Routes>
         <Route
