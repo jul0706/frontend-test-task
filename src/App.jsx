@@ -35,7 +35,8 @@ function App() {
   }
 
   function handleEditPointClick(point) {
-    setSelectedPoint(point)
+    setSelectedPoint(point);
+    setIsEditPointPopupOpen(true);
   }
 
   function openPopupWithConfirmation() {
@@ -68,8 +69,14 @@ function App() {
     handleCloseAllPopups();
   }
 
-  function handleSubmitEditPoint() {
-    console.log('')
+  function handleEditPoint(point, formValue) {
+    point.name = formValue.name;
+    point.amount = formValue.amount;
+    point.x = +formValue.x;
+    point.y = +formValue.y;
+    console.log(point);
+    setPoints((state) => state.map((s) => s.id === point.id ? point : s))
+    handleCloseAllPopups();
   }
 
   function handleDeletePoint() {
@@ -104,7 +111,7 @@ function App() {
               element={Main}
               points={points}
               onAddPoint={handleAddPointClick}
-              onEditPoint={handleEditPointClick}
+              onEditPointClick={handleEditPointClick}
               onConfirm={openPopupWithConfirmation}
               loggedIn={isLoggedIn}
             />}
@@ -130,7 +137,7 @@ function App() {
         point={selectedPoint}
         isOpen={isEditPointPopupOpen}
         onClose={handleCloseAllPopups}
-        onSubmit={handleSubmitEditPoint}
+        onSubmit={handleEditPoint}
       />
       <PopupWithConfirmation
         point={selectedPoint}

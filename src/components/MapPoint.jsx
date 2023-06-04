@@ -1,6 +1,10 @@
 import markerPath from '../images/marker.png';
 
-function MapPoint({ point, onEditPoint }) {
+function MapPoint({ point, onEditPointClick, id }) {
+
+    function handlePointClick() {
+        onEditPointClick(point)
+    }
 
     return (
         <div className="map-container__marker-container" style={{ top: `${point.y.toFixed(2)}%`, left: `${point.x.toFixed(2)}%` }}>
@@ -9,7 +13,7 @@ function MapPoint({ point, onEditPoint }) {
                 src={markerPath}
                 alt="точка на карте"
                 title={`${point.name}, количество товара: ${point.amount}`}
-                onClick={onEditPoint}
+                onClick={handlePointClick}
             />
         </div>
     )

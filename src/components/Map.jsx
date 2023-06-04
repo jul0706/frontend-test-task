@@ -1,7 +1,7 @@
 import React from "react";
 import MapPoint from "./MapPoint";
 
-function Map({ points, onEditPoint }) {
+function Map({ points, onEditPointClick }) {
     let id = 0;
     return (
         <div className="map-container">
@@ -1849,18 +1849,11 @@ function Map({ points, onEditPoint }) {
             {
                 points.map((point) => {
                     id++;
+                    point.id = id
                     return (<MapPoint
                         key={id}
                         point={point}
-                        /*coordinate={
-                            {
-                                x: `${(point.x).toFixed(2)}%`,
-                                y: `${(point.y).toFixed(2)}%`
-                            }
-                        }
-                        name={point.name}
-                        amount={point.amount}*/
-                        onEditPoint={onEditPoint}
+                        onEditPointClick={onEditPointClick}
                     />)
                 })
             }
