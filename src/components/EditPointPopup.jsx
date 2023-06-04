@@ -17,7 +17,7 @@ function EditPointPopup({ point, isOpen, onClose, onSubmit }) {
                             minLength="2"
                             maxLength="30"
                             placeholder="Название"
-                            value={point.name}
+                            value={0}
                             required
                         />
                         <input
@@ -27,7 +27,7 @@ function EditPointPopup({ point, isOpen, onClose, onSubmit }) {
                             name="amount"
                             className="form-popup__input"
                             placeholder="Количество товара"
-                            value={point.amount}
+                            value={0}
                             required
                         />
                         <input
@@ -37,7 +37,7 @@ function EditPointPopup({ point, isOpen, onClose, onSubmit }) {
                             min={0}
                             step={0.1}
                             placeholder="Координата X, %"
-                            value={(point.x).toFixed(2)}
+                            value={(10).toFixed(2)}
                             required
                         />
                         <input
@@ -47,7 +47,7 @@ function EditPointPopup({ point, isOpen, onClose, onSubmit }) {
                             min={0}
                             step={0.1}
                             placeholder="Координата Y, %"
-                            value={(point.y).toFixed(2)}
+                            value={(10).toFixed(2)}
                             required
                         />
                     </fieldset>

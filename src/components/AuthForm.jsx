@@ -6,11 +6,11 @@ function AuthForm({ onSubmit, formValue, onChange }) {
             <form onSubmit={onSubmit} className="login__form">
                 <div className="login__inputs">
                     <input
-                        type="email"
-                        name="email"
+                        type="login"
+                        name="login"
                         className="login__input"
-                        placeholder="Логин"
-                        value={formValue.email}
+                        placeholder="Введите логин"
+                        value={formValue.login}
                         onChange={onChange}
                     />
                     <input
@@ -18,12 +18,12 @@ function AuthForm({ onSubmit, formValue, onChange }) {
                         name="password"
                         className="login__input"
                         minLength="4"
-                        placeholder="Пароль"
+                        placeholder="Введите пароль"
                         value={formValue.password}
                         onChange={onChange}
                     />
                 </div>
-                <button className="login__button">Войти</button>
+                <button type="submit" className="login__button">Войти</button>
             </form>
         </>
     )

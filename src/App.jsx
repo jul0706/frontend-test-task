@@ -23,10 +23,24 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [formValue, setFormValue] = useState({ //стэйт формы авторизации и регистрации
-    email: '',
-    password: ''
-  })
+  const navigate = useNavigate();
+
+  //обработчики открытия попапов
+  function handleLogin(isLogin) {
+    setIsLoggedIn(isLogin);
+  }
+
+  function handleAddPointClick() {
+    setIsEditPointPopupOpen(true);
+  }
+
+  function handleEditPointClick() {
+    setIsAddPointPopupOpen(true);
+  }
+
+  function openPopupWithConfirmation() {
+    setisPopupWithConfirmationOpen(true)
+  }
 
   function handleCloseAllPopups() {
     setIsEditPointPopupOpen(false);
@@ -35,7 +49,12 @@ function App() {
     setSelectedPoint(null);
   }
 
-  const handleChange = (e) => {
+  const [formValue, setFormValue] = useState({
+    login: '',
+    password: ''
+  })
+
+  const handleChangeInput = (e) => {
     const { name, value } = e.target;
 
     setFormValue({
@@ -44,18 +63,31 @@ function App() {
     });
   }
 
-  function handleLogin(isLogin) { //вход/выход на сайт
-    setIsLoggedIn(isLogin);
+  function handleAddPoint(newPoint) {
+    setPoints([...points, newPoint])
+    handleCloseAllPopups();
   }
 
-  /*function handleAddPoint(data) {
-    api.addCard(data)
-      .then((newCard) => {
-        setCards([newCard, ...cards])
-      })
-      .catch(err => displayError(err));
-    handleCloseAllPopups();
-  }*/
+  function handleSubmitEditPoint() {
+    console.log('')
+  }
+
+  function handleDeletePoint() {
+    console.log('')
+  }
+
+  function checkLogin() {
+    if (localStorage.getItem('login')) {
+      navigate('/frontend-test-task', { replace: true })
+    } else {
+      navigate('/sign-in', { replace: true })
+    }
+  }
+
+  useEffect(() => {
+    checkLogin()
+  })
+
 
   return (
     <>
@@ -70,15 +102,18 @@ function App() {
             <ProtectedRouteElement
               element={Main}
               points={points}
+              onAddPoint={handleAddPointClick}
+              onEditPoint={handleEditPointClick}
+              onConfirm={openPopupWithConfirmation}
+              loggedIn={isLoggedIn}
             />}
         />
         <Route
           path="/sign-in"
           element={
             <Login
-              onLogin={false}
-              setisAuthComplete={setIsLoggedIn}
-              onChange={handleChange}
+              onLogin={setIsLoggedIn}
+              onChange={handleChangeInput}
               formValue={formValue}
               setFormValue={setFormValue}
             />}
@@ -88,19 +123,19 @@ function App() {
       <AddPointPopup
         isOpen={isAddPointPopupOpen}
         onClose={handleCloseAllPopups}
-        onSubmit={handleAddPoint}
+        onAddPoint={handleAddPoint}
       />
       <EditPointPopup
         point={selectedPoint}
         isOpen={isEditPointPopupOpen}
         onClose={handleCloseAllPopups}
-        onSubmit={submitFormMapPoint}
+        onSubmit={handleSubmitEditPoint}
       />
       <PopupWithConfirmation
         point={selectedPoint}
         isOpen={isPopupWithConfirmationOpen}
         onClose={handleCloseAllPopups}
-        onSubmit={submitFormMapPoint}
+        onSubmit={handleDeletePoint}
       />
     </>
   );
