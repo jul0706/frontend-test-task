@@ -1,14 +1,14 @@
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Main from "./components/Main";
-import AddPointPopup from "./components/AddPointPopup";
-import EditPointPopup from "./components/EditPointPopup";
-import PopupWithConfirmation from "./components/PopupWithConfirmation";
-import Login from "./components/Login";
+import Footer from "./Footer";
+import Header from "./Header";
+import Main from "./Main";
+import AddPointPopup from "./AddPointPopup";
+import EditPointPopup from "./EditPointPopup";
+import PopupWithConfirmation from "./PopupWithConfirmation";
+import Login from "./Login";
 import React, { useState, useEffect } from 'react';
-import initialModel from "./utils/model";
+import initialModel from "../utils/model";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import ProtectedRouteElement from "../src/components/ProtectedRoute";
+import ProtectedRouteElement from "./ProtectedRoute";
 
 
 function App() {

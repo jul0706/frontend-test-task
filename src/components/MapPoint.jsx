@@ -1,6 +1,6 @@
 import markerPath from '../images/marker.png';
 
-function MapPoint({ point, onEditPointClick, id }) {
+function MapPoint({ point, onEditPointClick }) {
 
     function handlePointClick() {
         onEditPointClick(point)
