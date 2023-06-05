@@ -19,7 +19,7 @@ function App() {
   const [isPopupWithConfirmationOpen, setisPopupWithConfirmationOpen] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState(null);
 
-  const [points, setPoints] = useState(initialModel);
+  const [points, setPoints] = useState([]);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -50,6 +50,7 @@ function App() {
     setSelectedPoint(null);
   }
 
+
   const [formValue, setFormValue] = useState({
     login: '',
     password: ''
@@ -64,17 +65,18 @@ function App() {
     });
   }
 
-  function handleAddPoint(newPoint) {
-    setPoints([...points, newPoint])
+  function handleAddPointSubmit(newPoint) {
+    let arrayForLocalStorage = [...points, newPoint];
+    setPoints(arrayForLocalStorage);
     handleCloseAllPopups();
+    return arrayForLocalStorage
   }
 
-  function handleEditPoint(point, formValue) {
+  function handleEditPointSubmit(point, formValue) {
     point.name = formValue.name;
-    point.amount = formValue.amount;
+    point.amount = +formValue.amount;
     point.x = +formValue.x;
     point.y = +formValue.y;
-    console.log(point);
     setPoints((state) => state.map((s) => s.id === point.id ? point : s))
     handleCloseAllPopups();
   }
@@ -92,9 +94,21 @@ function App() {
     }
   }
 
+  function checkLocalStorage() {
+    let initialPoints;
+    if (localStorage.getItem('points')) {
+      initialPoints = JSON.parse(localStorage.getItem('points'))
+    } else {
+      initialPoints = initialModel
+    }
+    setPoints(initialPoints);
+    localStorage.setItem('points', JSON.stringify(initialPoints))
+  }
+
   useEffect(() => {
-    checkLogin()
-  }, [])
+    checkLocalStorage();
+    checkLogin();
+  }, [isLoggedIn])
 
 
   return (
@@ -110,7 +124,7 @@ function App() {
             <ProtectedRouteElement
               element={Main}
               points={points}
-              onAddPoint={handleAddPointClick}
+              onAddPointClick={handleAddPointClick}
               onEditPointClick={handleEditPointClick}
               onConfirm={openPopupWithConfirmation}
               loggedIn={isLoggedIn}
@@ -131,13 +145,14 @@ function App() {
       <AddPointPopup
         isOpen={isAddPointPopupOpen}
         onClose={handleCloseAllPopups}
-        onAddPoint={handleAddPoint}
+        onAddPoint={handleAddPointSubmit}
+        points={points}
       />
       <EditPointPopup
         point={selectedPoint}
         isOpen={isEditPointPopupOpen}
         onClose={handleCloseAllPopups}
-        onSubmit={handleEditPoint}
+        onSubmit={handleEditPointSubmit}
       />
       <PopupWithConfirmation
         point={selectedPoint}

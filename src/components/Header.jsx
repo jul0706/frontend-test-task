@@ -7,6 +7,7 @@ function Header({ isLoggedIn, onLogout }) {
 
     function logOut() {
         localStorage.removeItem('login');
+        localStorage.removeItem('points');
         onLogout(false)
         navigate('/sign-in', { replace: true });
     }

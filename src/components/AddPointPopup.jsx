@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-function AddPointPopup({ isOpen, onClose, onAddPoint }) {
+function AddPointPopup({ isOpen, onClose, onAddPoint, points }) {
 
-    const [formValue, setFormValue] = useState({ //стэйт формы 
+    let [formValue, setFormValue] = useState({
         name: "",
         amount: 0,
         x: 0,
@@ -10,7 +10,11 @@ function AddPointPopup({ isOpen, onClose, onAddPoint }) {
     })
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        let { name, value } = e.target;
+
+        if (name === 'x' || name === 'y') {
+            value = +value;
+        }
 
         setFormValue({
             ...formValue,
@@ -18,9 +22,17 @@ function AddPointPopup({ isOpen, onClose, onAddPoint }) {
         });
     }
 
+
     function handleSubmit(e) {
         e.preventDefault();
-        onAddPoint(formValue)
+        let arrayForLocalStorage = onAddPoint(formValue);
+        localStorage.setItem('points', JSON.stringify(arrayForLocalStorage));
+        setFormValue({
+            name: "",
+            amount: 0,
+            x: 0,
+            y: 0,
+        })
     }
 
     return (
@@ -46,7 +58,6 @@ function AddPointPopup({ isOpen, onClose, onAddPoint }) {
                         <input
                             type="number"
                             min={1}
-                            step={5}
                             name="amount"
                             className="form-popup__input"
                             placeholder="Количество товара"
@@ -63,7 +74,7 @@ function AddPointPopup({ isOpen, onClose, onAddPoint }) {
                             step={0.1}
                             placeholder="Координата X, %"
                             required
-                            value={formValue.x}
+                            value={+formValue.x}
                             onChange={handleChange}
                         />
                         <input
@@ -75,7 +86,7 @@ function AddPointPopup({ isOpen, onClose, onAddPoint }) {
                             step={0.1}
                             placeholder="Координата Y, %"
                             required
-                            value={formValue.y}
+                            value={+formValue.y}
                             onChange={handleChange}
                         />
                     </fieldset>
