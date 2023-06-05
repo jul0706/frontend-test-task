@@ -11,22 +11,18 @@ function AddPointPopup({ isOpen, onClose, onAddPoint, points }) {
 
     const handleChange = (e) => {
         let { name, value } = e.target;
-
         if (name === 'x' || name === 'y') {
             value = +value;
         }
-
         setFormValue({
             ...formValue,
             [name]: value
         });
     }
 
-
     function handleSubmit(e) {
         e.preventDefault();
-        let arrayForLocalStorage = onAddPoint(formValue);
-        localStorage.setItem('points', JSON.stringify(arrayForLocalStorage));
+        onAddPoint(formValue);
         setFormValue({
             name: "",
             amount: 0,

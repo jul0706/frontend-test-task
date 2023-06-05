@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 
-function EditPointPopup({ point, isOpen, onClose, onSubmit }) {
+function EditPointPopup({ point, isOpen, onClose, onSubmit, onConfirmPopupOpen }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        onSubmit(point, formValue)
+        onSubmit(point, formValue);
+    }
+
+    function handleDeleteClick() {
+        onConfirmPopupOpen(true)
     }
 
     const [formValue, setFormValue] = useState({
@@ -88,7 +92,7 @@ function EditPointPopup({ point, isOpen, onClose, onSubmit }) {
                     </fieldset>
                     <div className="form-popup__buttons-container">
                         <button type="submit" className="form-popup__button">Сохранить</button>
-                        <button type="button" className="form-popup__button">Удалить</button>
+                        <button type="button" className="form-popup__button" onClick={handleDeleteClick}>Удалить</button>
                     </div>
                 </form>
             </div>

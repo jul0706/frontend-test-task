@@ -66,10 +66,10 @@ function App() {
   }
 
   function handleAddPointSubmit(newPoint) {
-    let arrayForLocalStorage = [...points, newPoint];
+    const arrayForLocalStorage = [...points, newPoint];
     setPoints(arrayForLocalStorage);
+    localStorage.setItem('points', JSON.stringify(arrayForLocalStorage));
     handleCloseAllPopups();
-    return arrayForLocalStorage
   }
 
   function handleEditPointSubmit(point, formValue) {
@@ -77,12 +77,17 @@ function App() {
     point.amount = +formValue.amount;
     point.x = +formValue.x;
     point.y = +formValue.y;
-    setPoints((state) => state.map((s) => s.id === point.id ? point : s))
+    const arrayForLocalStorage = points.map((p) => p.id === point.id ? point : p)
+    setPoints(arrayForLocalStorage);
+    localStorage.setItem('points', JSON.stringify(arrayForLocalStorage))
     handleCloseAllPopups();
   }
 
-  function handleDeletePoint() {
-    console.log('')
+  function handleDeletePoint(point) {
+    let arrayForLocalStorage = points.filter((p) => p.id !== point.id);
+    setPoints(arrayForLocalStorage);
+    localStorage.setItem('points', JSON.stringify(arrayForLocalStorage));
+    handleCloseAllPopups();
   }
 
   function checkLogin() {
@@ -124,10 +129,12 @@ function App() {
             <ProtectedRouteElement
               element={Main}
               points={points}
+              setPoints={setPoints}
               onAddPointClick={handleAddPointClick}
               onEditPointClick={handleEditPointClick}
               onConfirm={openPopupWithConfirmation}
               loggedIn={isLoggedIn}
+              initialPoints={initialModel}
             />}
         />
         <Route
@@ -153,12 +160,13 @@ function App() {
         isOpen={isEditPointPopupOpen}
         onClose={handleCloseAllPopups}
         onSubmit={handleEditPointSubmit}
+        onConfirmPopupOpen={setisPopupWithConfirmationOpen}
       />
       <PopupWithConfirmation
         point={selectedPoint}
         isOpen={isPopupWithConfirmationOpen}
         onClose={handleCloseAllPopups}
-        onSubmit={handleDeletePoint}
+        onDelete={handleDeletePoint}
       />
     </>
   );
