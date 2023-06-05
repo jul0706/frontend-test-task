@@ -147,6 +147,15 @@ function App() {
               setFormValue={setFormValue}
             />}
         />
+        <Route
+          path="*"
+          element={<Login
+            onLogin={setIsLoggedIn}
+            onChange={handleChangeInput}
+            formValue={formValue}
+            setFormValue={setFormValue}
+          />}
+        />
       </Routes>
       <Footer />
       <AddPointPopup
