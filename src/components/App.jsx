@@ -10,7 +10,6 @@ import initialModel from "../utils/model";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import ProtectedRouteElement from "./ProtectedRoute";
 
-
 function App() {
 
   /*стейты для попапов*/
@@ -180,4 +179,5 @@ function App() {
     </>
   );
 }
+
 export default App;
