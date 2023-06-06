@@ -55,7 +55,7 @@ function EditPointPopup({ point, isOpen, onClose, onSubmit, onConfirmPopupOpen }
                             minLength="2"
                             maxLength="30"
                             placeholder="Название"
-                            value={formValue.name/*`${formValue.name ? formValue.name : ''}`*/}
+                            value={formValue.name}
                             required
                             onChange={handleChangeInput}
                         />
@@ -65,7 +65,7 @@ function EditPointPopup({ point, isOpen, onClose, onSubmit, onConfirmPopupOpen }
                             name="amount"
                             className="form-popup__input"
                             placeholder="Количество товара"
-                            value={formValue.amount/*`${formValue.amount ? formValue.amount : 0}`*/}
+                            value={formValue.amount}
                             required
                             onChange={handleChangeInput}
                         />
@@ -75,7 +75,7 @@ function EditPointPopup({ point, isOpen, onClose, onSubmit, onConfirmPopupOpen }
                             className="form-popup__input"
                             min={0}
                             placeholder="Координата X, %"
-                            value={formValue.x/*`${formValue.x ? formValue.x : 0}`*/}
+                            value={formValue.x}
                             required
                             onChange={handleChangeInput}
                         />
@@ -85,7 +85,7 @@ function EditPointPopup({ point, isOpen, onClose, onSubmit, onConfirmPopupOpen }
                             className="form-popup__input"
                             min={0}
                             placeholder="Координата Y, %"
-                            value={formValue.y/*`${formValue.y ? formValue.y : 0}`*/}
+                            value={formValue.y}
                             required
                             onChange={handleChangeInput}
                         />

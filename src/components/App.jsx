@@ -9,6 +9,7 @@ import React, { useState, useEffect } from 'react';
 import initialModel from "../utils/model";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import ProtectedRouteElement from "./ProtectedRoute";
+import UnknownState from "./UnknownState";
 
 function App() {
 
@@ -148,12 +149,19 @@ function App() {
         />
         <Route
           path="*"
-          element={<Login
-            onLogin={setIsLoggedIn}
-            onChange={handleChangeInput}
-            formValue={formValue}
-            setFormValue={setFormValue}
-          />}
+          element={
+            <UnknownState
+              isLoggedIn={isLoggedIn}
+              points={points}
+              setPoints={setPoints}
+              onAddPointClick={handleAddPointClick}
+              onEditPointClick={handleEditPointClick}
+              initialPoints={initialModel}
+              onLogin={setIsLoggedIn}
+              onChange={handleChangeInput}
+              formValue={formValue}
+              setFormValue={setFormValue}
+            />}
         />
       </Routes>
       <Footer />
